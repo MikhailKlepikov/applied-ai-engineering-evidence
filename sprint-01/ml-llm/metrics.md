@@ -1,53 +1,53 @@
-# ML/LLM — Metrics
+# ML/LLM — метрики
 
-## Day 1 baseline
+## Baseline дня 1
 
-- Date: 2026-08-13
-- Duration: 66 minutes
-- Mode: manual baseline without code and without PASS/FAIL
+- Дата: 2026-08-13
+- Длительность: 66 минут
+- Режим: ручной baseline без кода и без PASS/FAIL
 
-## Confusion matrix exercise
+## Задача на confusion matrix
 
-The exercise contained 100 objects. The final manually corrected counts were:
+В задаче было 100 объектов. После ручной проверки получены:
 
 |  | Predicted positive | Predicted negative |
 |---|---:|---:|
 | Actual positive | TP = 6 | FN = 4 |
 | Actual negative | FP = 2 | TN = 88 |
 
-The initial value `TN = 92` was incorrect and was corrected to 88 after checking that all four cells sum to 100.
+Первоначальное значение `TN = 92` было ошибочным. После проверки суммы всех четырёх ячеек оно исправлено на 88.
 
-## Manual verification
+## Ручная проверка
 
 - Precision: `6 / (6 + 2) = 0.75`.
 - Recall: `6 / (6 + 4) = 0.60`.
-- F1 was not calculated during the baseline.
+- F1 во время baseline не рассчитывался.
 
-Interpretation recovered during the session:
+В ходе сессии восстановлена интерпретация:
 
-- Precision denominator = all predicted positives.
-- Recall denominator = all actual positives.
-- When false negatives are expensive, recall is usually a primary metric, but the final choice must account for the costs of both error classes.
+- знаменатель precision — все предсказанные положительные объекты;
+- знаменатель recall — все фактически положительные объекты;
+- при высокой цене false negative обычно важен recall, но окончательный выбор должен учитывать стоимость обоих классов ошибок.
 
-## Other manual results
+## Другие ручные результаты
 
 - `E[X] = 0·0.5 + 1·0.3 + 2·0.2 = 0.7`.
-- `Var(X) = 0.61`; the formula was applied, but the verbal interpretation of variance was not reproduced.
+- `Var(X) = 0.61`; формула применена, но словесный смысл дисперсии не воспроизведён.
 - `(32, 10) @ (10, 4) → (32, 4)`.
-- The result of `X @ W + b` was identified as `(32, 4)`.
-- A NumPy array can be doubled through element-wise multiplication by a scalar.
+- Shape результата `X @ W + b` определён как `(32, 4)`.
+- Удвоение NumPy-массива возможно через поэлементное умножение на скаляр.
 
-## Errors and gaps
+## Ошибки и пробелы
 
-- Euclidean norm was not recognized as vector length.
-- Dot product was computed with an incorrect expression and signs were not preserved.
-- Cosine similarity was not calculated.
-- A one-dimensional array was written as `(1, 3)` instead of `(3,)`.
-- Broadcasting was initially applied only to the first row.
-- PyTorch, autograd, training loop, train/validation/test, baseline, overfitting and leakage were not known.
-- Repeating the same deterministic model run was incorrectly expected to fix missed positives.
-- The number of operations was incorrectly treated as a direct cause of worse model error rates.
+- Евклидова норма не распознана как длина вектора.
+- Dot product вычислялся по неверному выражению; знаки координат не сохранялись.
+- Cosine similarity не рассчитана.
+- Одномерный массив был записан как `(1, 3)` вместо `(3,)`.
+- Broadcasting изначально применён только к первой строке.
+- Неизвестны PyTorch, autograd, training loop, train/validation/test, baseline, overfitting и leakage.
+- Повторный запуск той же детерминированной модели ошибочно считался способом исправить пропуски.
+- Рост числа операций ошибочно считался непосредственной причиной ухудшения долей ошибок модели.
 
-## Evidence boundary
+## Граница evidence
 
-No executable ML code, dataset, seed, split or experiment was created on Day 1. These results are manual baseline calculations, not acceptance evidence for the required training loop or controlled experiment.
+В день 1 не создавались исполняемый ML-код, dataset, seed, split или эксперимент. Это ручные baseline-вычисления, а не приёмочное evidence для обязательных training loop и контролируемого эксперимента.
