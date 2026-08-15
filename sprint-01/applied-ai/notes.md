@@ -1,57 +1,57 @@
-# Applied AI — Notes
+# Applied AI — заметки
 
-## Day 1 baseline
+## Baseline дня 1
 
-- Date: 2026-08-13
-- Duration: 118 minutes
-- Mode: starting baseline, no PASS/FAIL
-- Independence estimate from the learning session: approximately 40%
+- Дата: 2026-08-13
+- Длительность: 118 минут
+- Режим: стартовый baseline без PASS/FAIL
+- Оценка самостоятельности из учебной сессии: около 40%
 
-## Environment established
+## Подготовленное окружение
 
-- Evidence repository cloned locally to `C:\Users\mikha\Projects\applied-ai-engineering-evidence`.
-- Project `.venv` created and activated.
-- The environment uses its own Python, pip and dependency directory.
-- `.venv/` is ignored by Git.
-- pytest 9.1.1 is available inside `.venv`.
+- Evidence-репозиторий клонирован в `C:\Users\mikha\Projects\applied-ai-engineering-evidence`.
+- Создана и активирована проектная `.venv`.
+- Окружение использует отдельные Python, pip и каталог зависимостей.
+- `.venv/` игнорируется Git.
+- Внутри `.venv` доступен pytest 9.1.1.
 
-## Mental models reproduced or corrected
+## Воспроизведённые или исправленные mental models
 
-- Type annotations such as `a: int` do not enforce argument types at runtime.
-- `@dataclass` can generate `__init__`.
-- A call to an `async def` function returns a coroutine object.
-- `await` suspends the current coroutine while the awaited operation is incomplete.
-- `time.sleep()` blocks the event-loop thread; absence of `await` is not itself the root cause.
-- `except Exception: return None` conflates failure causes, hides traceback/observability and makes `None` ambiguous.
-- A unit test isolates a service; an endpoint integration test covers the cooperation of HTTP routing, validation, DI, service logic and response mapping.
+- Аннотации типа `a: int` не проверяют тип аргумента во время выполнения.
+- `@dataclass` может сгенерировать `__init__`.
+- Вызов функции, объявленной через `async def`, возвращает coroutine object.
+- `await` приостанавливает текущую корутину, пока ожидаемая операция не завершена.
+- `time.sleep()` блокирует поток event loop; отсутствие `await` само по себе не является причиной блокировки.
+- `except Exception: return None` смешивает причины ошибок, скрывает traceback и наблюдаемость, делает `None` неоднозначным.
+- Unit-тест изолирует сервис; integration-тест endpoint проверяет совместную работу HTTP routing, validation, DI, service logic и response mapping.
 
-## Baseline gaps
+## Пробелы baseline
 
-- Typing, generics, protocols and dataclass constraints require systematic study.
-- The distinction between `__new__` and `__init__` is not reproducible yet.
-- Cancellation, timeouts, tasks, `TaskGroup` and event-loop scheduling are not understood deeply enough.
-- Request lifecycle was described only as endpoint → service → result; routing, validation, DI, serialization and error mapping were missing.
-- HTTP statuses 422, 404 and 503 were not reproduced.
-- Unit and integration tests were initially not distinguishable.
+- Требуется системно пройти typing, generics, protocols и ограничения dataclasses.
+- Различие `__new__` и `__init__` пока не воспроизводится.
+- Недостаточно поняты cancellation, timeout, task, `TaskGroup` и планирование event loop.
+- Request lifecycle описан только как endpoint → service → result; отсутствовали routing, validation, DI, serialization и error mapping.
+- Не воспроизведены HTTP-статусы 422, 404 и 503.
+- Unit- и integration-тесты изначально не различались.
 
-## Documentation
+## Официальная документация
 
-No official documentation section was completed during the baseline. Documentation reading remains scheduled by the Sprint Contract.
+В рамках baseline отдельный раздел официальной документации не изучался. Чтение остаётся в календаре Sprint Contract.
 
-## Practical work
+## Практическая работа
 
-Environment and tool checks were completed. No program implementation or debugging task was performed.
+Выполнены проверки окружения и инструментов. Программная реализация и debugging-задача не выполнялись.
 
-## Recall priorities
+## Приоритеты повторения
 
-1. Coroutine object, scheduling and `await`.
-2. Blocking calls inside async code.
-3. Explicit error models instead of broad exception swallowing.
-4. Unit versus integration test boundaries.
-5. Dataclass defaults and generated methods.
+1. Coroutine object, scheduling и `await`.
+2. Блокирующие вызовы внутри async-кода.
+3. Явная модель ошибок вместо широкого перехвата исключений.
+4. Границы unit- и integration-тестов.
+5. Значения по умолчанию и генерируемые методы dataclass.
 
-## Debt
+## Долг
 
-- Reproduce the environment checks with raw command output when formal evidence is required.
-- Complete the scheduled Python design and async exercises.
-- Record tested error scenarios once the FastAPI module exists.
+- Повторить проверки окружения с сохранением сырого вывода команд, когда потребуется формальное evidence.
+- Выполнить запланированные задачи по Python design и async.
+- Зафиксировать проверенные ошибочные сценарии после появления FastAPI-модуля.
