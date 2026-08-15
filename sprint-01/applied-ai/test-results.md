@@ -1,16 +1,16 @@
-# Applied AI — Test results
+# Applied AI — результаты проверок
 
-## Day 1 environment checks
+## Проверки окружения дня 1
 
-- Date: 2026-08-13
-- Repository state: local evidence repository
+- Дата: 2026-08-13
+- Состояние: локальный evidence-репозиторий
 - Python: 3.13.3
 - Git: 2.49.0.windows.1
-- Global pip: 26.2.1
-- `.venv` pip: 25.0.1
-- `.venv` pytest: 9.1.1
+- Глобальный pip: 26.2.1
+- pip внутри `.venv`: 25.0.1
+- pytest внутри `.venv`: 9.1.1
 
-## Commands represented by the session
+## Команды из сессии
 
 ```powershell
 python --version
@@ -21,7 +21,7 @@ pip --version
 git status --short
 ```
 
-## Observed result
+## Зафиксированный результат
 
 ```text
 Python 3.13.3
@@ -32,15 +32,15 @@ pytest 9.1.1
 git status --short: empty
 ```
 
-The values above were recorded from the learning session. Raw terminal output was not committed, so these checks must be rerun before they are used as formal acceptance evidence.
+Значения перенесены из журнала учебной сессии. Сырой терминальный вывод не закоммичен, поэтому перед использованием в качестве формального приёмочного evidence проверки нужно повторить.
 
-## Program tests
+## Программные тесты
 
-No application tests were run on Day 1. The pytest invocation only verified that the test runner is installed inside the virtual environment.
+В день 1 тесты приложения не запускались. Команда pytest только подтвердила наличие test runner внутри виртуального окружения.
 
-## Checked error scenarios
+## Проверенные ошибочные сценарии
 
-| Scenario | Expected | Actually observed | Status |
+| Сценарий | Ожидаемо | Фактически | Статус |
 |---|---|---|---|
-| Global Python cannot initially import pytest | Project dependencies should live in `.venv` | pytest became available after using the project environment | Environment check only |
-| `.venv/` appears in Git changes | Virtual environment must not be committed | `git status --short` was empty | Verified in session |
+| Глобальный Python изначально не импортирует pytest | Зависимости проекта должны находиться в `.venv` | pytest стал доступен при использовании проектного окружения | Только проверка окружения |
+| `.venv/` появляется в изменениях Git | Виртуальное окружение не должно попадать в репозиторий | `git status --short` пустой | Проверено в сессии |
