@@ -1,26 +1,26 @@
-# Open WebUI — Version baseline
+# Open WebUI — baseline версии
 
 - Upstream: https://github.com/open-webui/open-webui
-- Required tag: `v0.11.0`
-- Required commit: `f9590b8017199e56d5e953657e6498e3cef1d246`
-- Version switching in Sprint 1: prohibited without a decision from the main chat
+- Требуемый tag: `v0.11.0`
+- Требуемый commit: `f9590b8017199e56d5e953657e6498e3cef1d246`
+- Переключение версии в Sprint 1: запрещено без решения главного чата
 
-## Day 1 status
+## Статус дня 1
 
-- Session dates: 2026-08-14 — 2026-08-15
-- Duration: 106 minutes
-- Mode: starting baseline without PASS/FAIL
-- README inspected: Open WebUI `v0.11.0`
-- Source symbols inspected: none
-- Code changes: none
-- Tests: none
-- Technical blocker: none
+- Даты сессии: 2026-08-14 — 2026-08-15
+- Длительность: 106 минут
+- Режим: стартовый baseline без PASS/FAIL
+- Изучен README Open WebUI `v0.11.0`
+- Symbols исходного кода: не исследовались
+- Изменение кода: отсутствует
+- Тесты: не запускались
+- Технический блокер: отсутствует
 
-## Local verification
+## Локальная проверка
 
-Status: **not verified**.
+Статус: **не проверено**.
 
-The following evidence has not yet been collected:
+Следующее evidence пока не собрано:
 
 ```powershell
 git status --short
@@ -30,38 +30,38 @@ git describe --tags --exact-match
 git remote -v
 ```
 
-Before source analysis, the tag must resolve to the required commit and local `HEAD` must match it. A mismatch blocks analysis until the repository state is corrected.
+Перед анализом исходников tag должен разрешаться в требуемый commit, а локальный `HEAD` — совпадать с ним. Несовпадение блокирует анализ до исправления состояния репозитория.
 
-## Fork and remotes
+## Fork и remotes
 
-Expected topology:
+Ожидаемая топология:
 
 - Fork: `MikhailKlepikov/open-webui`
-- `origin`: personal fork
+- `origin`: личный fork
 - `upstream`: `open-webui/open-webui`
 
-Actual fork, clone and remotes have not been verified.
+Фактические fork, clone и remotes пока не проверены.
 
-## Baseline findings
+## Результаты baseline
 
-- Open WebUI is a self-hosted AI platform and web interface for working with LLMs.
-- A branch is a moving reference, a tag normally names a fixed commit, and a full SHA identifies one commit.
-- Fork, clone and pull request are different operations.
-- An entry point is the place where control enters a component.
-- A read-only Agent task must not create a diff.
+- Open WebUI — self-hosted AI-платформа и веб-интерфейс для работы с LLM.
+- Branch — перемещающийся указатель; tag обычно обозначает фиксированный commit; полный SHA однозначно идентифицирует commit.
+- Fork, clone и pull request — разные операции.
+- Entry point — место, через которое управление входит в компонент.
+- Read-only задача для Agent не должна создавать diff.
 
-## Unverified architecture hypothesis
+## Неподтверждённая архитектурная гипотеза
 
 ```text
 frontend → backend → database → backend → LLM provider → backend → frontend
 ```
 
-This is only a hypothesis. It must not be used as a module map or sequence diagram until confirmed by concrete file paths, symbols, calls and tests.
+Это только гипотеза. Её нельзя считать module map или sequence diagram до подтверждения конкретными file paths, symbols, вызовами и тестами.
 
-## Debt
+## Долг
 
-- Verify fork, `origin`, `upstream`, tag and local `HEAD`.
-- Establish a reproducible large-repository reading workflow.
-- Find commands for starting frontend and backend.
-- Find backend/frontend entry points and test configuration.
-- Trace one request using file and symbol paths.
+- Проверить fork, `origin`, `upstream`, tag и локальный `HEAD`.
+- Сформировать воспроизводимый workflow чтения крупного репозитория.
+- Найти команды запуска frontend и backend.
+- Найти backend/frontend entry points и конфигурацию тестов.
+- Проследить один запрос по file и symbol paths.
