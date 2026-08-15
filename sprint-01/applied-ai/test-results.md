@@ -1,18 +1,46 @@
 # Applied AI — Test results
 
-## Окружение
+## Day 1 environment checks
 
-- Commit:
-- Python:
-- Команда запуска:
+- Date: 2026-08-13
+- Repository state: local evidence repository
+- Python: 3.13.3
+- Git: 2.49.0.windows.1
+- Global pip: 26.2.1
+- `.venv` pip: 25.0.1
+- `.venv` pytest: 9.1.1
 
-## Результат
+## Commands represented by the session
 
-```text
-Вставить воспроизводимый вывод команды.
+```powershell
+python --version
+git --version
+pip --version
+.\.venv\Scripts\python.exe -m pip --version
+.\.venv\Scripts\python.exe -m pytest --version
+git status --short
 ```
 
-## Проверенные ошибочные сценарии
+## Observed result
 
-| Сценарий | Ожидаемо | Фактически | Статус |
+```text
+Python 3.13.3
+Git 2.49.0.windows.1
+global pip 26.2.1
+.venv pip 25.0.1
+pytest 9.1.1
+git status --short: empty
+```
+
+The values above were recorded from the learning session. Raw terminal output was not committed, so these checks must be rerun before they are used as formal acceptance evidence.
+
+## Program tests
+
+No application tests were run on Day 1. The pytest invocation only verified that the test runner is installed inside the virtual environment.
+
+## Checked error scenarios
+
+| Scenario | Expected | Actually observed | Status |
 |---|---|---|---|
+| Global Python cannot initially import pytest | Project dependencies should live in `.venv` | pytest became available after using the project environment | Environment check only |
+| `.venv/` appears in Git changes | Virtual environment must not be committed | `git status --short` was empty | Verified in session |
